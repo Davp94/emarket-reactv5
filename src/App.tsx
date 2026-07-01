@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { PromocionCard } from "./components/PromocionCard";
+import { MyButton } from "./components/MyButton";
+import { Carrousel } from "./components/Carrousel";
 
 interface Promocion {
   id: number;
@@ -37,6 +39,7 @@ function App() {
   ];
   return (
     <>
+      <Carrousel/>
       {promotions.map((p) => (
         <PromocionCard
           key={p.id}
@@ -45,6 +48,8 @@ function App() {
           imageUrl={p.imageUrl}
         />
       ))}
+      {/* <MyButton onClick={() => console.log('')}  /> */}
+      <button onClick={()=>console.log('')}></button>
     </>
   );
 }
