@@ -1,0 +1,52 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    box-shadow: 0 1x 2px 0 rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: auto;
+    padding-inline: 10px;
+    height: 5rem;
+}
+
+.logo {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 50px;
+}
+
+.navLinks {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.navLink {
+    color: var(--color-on-surface-variant);
+    transition: color 0.2s ease;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.navLink:hover {
+    color: var(--color-primary);
+}
+
+.navLinkActive {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 4px;
+    font-weight: 500;
+}
+
+.actionSection {
+    display: flex;
+}

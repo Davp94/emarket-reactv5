@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { SlideData } from "../types/SlideData";
-import { MyButton } from "./MyButton";
+import { MyButton } from "./MyButton/MyButton";
 
 export function Carrousel () {
 

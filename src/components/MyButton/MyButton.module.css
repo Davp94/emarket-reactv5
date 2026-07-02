@@ -1,0 +1,32 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xl);
+    font-weight: 500;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+.sm {
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+}
+
+.md {
+    padding: 0.75rem 1.5rem;
+    font-size: 14px;
+}
+
+.lg {
+    padding: 1rem 2.5rem;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.primary {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary);
+}
