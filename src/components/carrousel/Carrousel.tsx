@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import type { SlideData } from "../types/SlideData";
-import { MyButton } from "./MyButton/MyButton";
-
+import type { SlideData } from "../../types/SlideData";
+import { MyButton } from "../MyButton/MyButton";
+import styles from './Carrousel.module.css';
 export function Carrousel () {
 
     //let currentSlide: number = 0;
@@ -36,30 +36,32 @@ export function Carrousel () {
         console.log('CHANGE CARROUSEL TO', currentSlide)
     }, [currentSlide])
     //data info slides
+    const handleScroll = () => {
 
+    }
     return (
-        <section>
-            {currentSlide}
-            <div ref={carrouselRef}>
+        <section className={styles.section} id="carrousel">
+            <div ref={carrouselRef} className={styles.carrouselContainer} onScroll={handleScroll}>
                 {slides.map(
                     slide => (
-                    <div key={slide.id}>
-                        <div style={{backgroundImage: `url(${slide.bgUrl})`}}>
+                    <div key={slide.id} className={styles.slide}>
+                        <div className={styles.overlay}>
                         </div>
-                        <div>
-                            <h1>{slide.title}</h1>
-                            <p>{slide.description}</p>
-                            <MyButton>
+                        <div style={{backgroundImage: `url(${slide.bgUrl})`}} className={styles.bgImage}></div>
+                        <div className={styles.content}>
+                            <h1 className={styles.title}>{slide.title}</h1>
+                            <p className={styles.description}>{slide.description}</p>
+                            <MyButton variant="secondaryContainer">
                                 {slide.buttonText}
                             </MyButton>
                         </div>
                     </div>)
                 )}
             </div>
-            <div>
+            <div className={styles.dotsContainer}>
                 {slides.map((_, index)=>(
                     <button onClick={()=>setCurrentSlide(index)
-                    }></button>
+                    } className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ''}`}></button>
                 ))}
             </div>
         </section>

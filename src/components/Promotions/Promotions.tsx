@@ -1,7 +1,9 @@
 import type { Promocion } from "../../types/Promotion";
-import { PromocionCard } from "../PromocionCard";
+import { PromocionCard } from "../PromocionCard/PromocionCard";
+import styles from "./Promotions.module.css";
 
 export function Promotions() {
+  //passwordSupabase passwordBlumbit1!
   const promotions: Promocion[] = [
     {
       id: 1,
@@ -29,15 +31,30 @@ export function Promotions() {
     },
   ];
   return (
-    <>
-      {promotions.map((p) => (
-        <PromocionCard
-          key={p.id}
-          titleProp={p.title}
-          descripcionProp={p.descripcion}
-          imageUrl={p.imageUrl}
-        />
-      ))}
-    </>
+    <section className={styles.section} id="promociones">
+      <div className={styles.header}>
+        <div>
+          <h2 className={styles.title}>Promociones Destacadas</h2>
+          <p className={styles.subtitle}>
+            Aprovecha nuestras mejores ofertas seleccionadas para ti.
+          </p>
+        </div>
+        <div className={styles.toolbar}>
+          <a href="#" className={styles.link}>
+            Ver todas las ofertas
+          </a>
+        </div>
+      </div>
+      <div className={styles.grid}>
+        {promotions.map((p) => (
+          <PromocionCard
+            key={p.id}
+            titleProp={p.title}
+            descripcionProp={p.descripcion}
+            imageUrl={p.imageUrl}
+          />
+        ))}
+      </div>
+    </section>
   );
 }

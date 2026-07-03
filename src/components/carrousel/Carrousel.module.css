@@ -1,0 +1,90 @@
+.section {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    padding-inline: var(--spacing-grid-margin);
+    padding-block: 2rem;
+}
+
+.carrouselContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    border-radius: var(--radius-3xl);
+    scrollbar-width: none;
+}
+
+.carrouselContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.slide {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    flex: 0 0 100%;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 10;
+}
+
+.bgImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    position: relative;
+    z-index: 20;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-inline: var(--spacing-grid-margin);
+    color: var(--color-on-error);
+}
+.title {
+    max-width: 48rem;
+    margin-bottom: 1.5rem;
+}
+
+.description {
+    max-width: 36rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.dotsContainer {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    z-index: 30;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.4;
+}
+
+.activeDot {
+    opacity: 1;
+    width: 24px;
+    border-radius: 12px;
+}

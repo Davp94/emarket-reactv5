@@ -11,7 +11,7 @@ export const Navbar = () => {
           <div className={styles.logo}>E-Market</div>
           <ul className={styles.navLinks}>
             <li>
-              <a href="#inicio" onClick={()=>setIsSelected(0)} className={`${styles.navLink} ${isSelected == 0 ? styles.navLinkActive : ''}`} >Inicio</a>
+              <a href="#carrousel" onClick={()=>setIsSelected(0)} className={`${styles.navLink} ${isSelected == 0 ? styles.navLinkActive : ''}`} >Inicio</a>
             </li>
             <li>
               <a href="#promociones" onClick={()=>setIsSelected(1)} className={`${styles.navLink} ${isSelected == 1 && styles.navLinkActive}`}>Promociones</a>
@@ -21,7 +21,7 @@ export const Navbar = () => {
             </li>
           </ul>
           <div className={styles.actionSection}>
-            <MyButton size="sm">Ingresar a la tienda</MyButton>
+            <MyButton size="sm" variant="primaryContainer">Ingresar a la tienda</MyButton>
           </div>
         </nav>
       </header>

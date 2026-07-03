@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
 :root {
     /* Colors */
     --color-tertiary-fixed-dim: #bec6e0;
@@ -47,10 +50,13 @@
     --color-secondary: #9d4300;
     --color-secondary-fixed: #ffdbca;
     --color-on-secondary-container: #5c2400;
-    /* borderRadius */
+    /* Border Radius */
     --radius-sm: 0.25rem;
+    --radius-default: 0.25rem;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
     --radius-full: 9999px;
     /* spacing */
     --spacing-grid-gutter: 24px;
@@ -59,18 +65,31 @@
     --spacing-base: 8px;
     --spacing-section-gap-desktop: 120px;
     --spacing-grid-margin: 24px;
+      /* Typography / Fonts */
+    --font-inter: 'Inter', sans-serif;
+    --font-geist: 'Geist', sans-serif;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
     background-color: var(--color-background);
     color: var(--color-on-surface);
+    font-family: var(--font-inter);
     font-size: 16px;
+    line-height: 1.5;
     font-weight: 400;
+    scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0;
 }
 
@@ -79,7 +98,8 @@ a {
     color: inherit;
 }
 
-ul, ol {
+ul,
+ol {
     list-style: none;
     margin: 0;
     padding: 0;

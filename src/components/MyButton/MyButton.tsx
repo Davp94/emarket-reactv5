@@ -1,7 +1,7 @@
 import styles from './MyButton.module.css';
 
 interface MyButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: 'primary' | 'outline'
+    variant?: 'primary' | 'primaryContainer' | 'secondaryContainer' | 'outline';
     size?: 'sm' | 'md' | 'lg'
     children: React.ReactNode
 }
