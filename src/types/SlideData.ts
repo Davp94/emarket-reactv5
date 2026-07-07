@@ -1,7 +1,7 @@
 export interface SlideData {
     id: number;
-    bgUrl: string;
+    bg_url: string;
     title: string;
     description: string;
-    buttonText: string;
+    button_text: string;
 }

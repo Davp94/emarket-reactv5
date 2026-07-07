@@ -1,6 +1,6 @@
 export interface Promocion {
   id: number;
   title: string;
-  descripcion: string;
-  imageUrl: string;
+  description: string;
+  image_url: string;
 }

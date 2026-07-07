@@ -1,0 +1,150 @@
+.section {
+  margin-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.05;
+}
+
+.subtitle {
+  max-width: 48rem;
+  color: var(--color-on-surface-variant);
+  opacity: 0.95;
+  margin-top: 0.75rem;
+  line-height: 1.75;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.link {
+  font-weight: 600;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.link:hover {
+  opacity: 0.85;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.75rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: var(--radius-3xl);
+  padding: 2rem 1.5rem;
+  box-shadow: 0 18px 40px rgba(16, 24, 40, 0.1);
+  border: 1px solid rgba(16, 24, 40, 0.08);
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin-bottom: 0.5rem;
+}
+
+.cardContent {
+  margin: 0;
+  color: var(--color-on-surface-variant);
+  line-height: 1.75;
+}
+
+.formWrapper {
+  margin-top: 3rem;
+}
+
+.formCard {
+  background-color: #ffffff;
+  border-radius: var(--radius-3xl);
+  padding: 2.5rem;
+  box-shadow: 0 18px 40px rgba(16, 24, 40, 0.1);
+  border: 1px solid rgba(16, 24, 40, 0.08);
+}
+
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+}
+
+.formSubtitle {
+  color: var(--color-on-surface-variant);
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.75;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  color: var(--color-on-surface);
+  background-color: var(--color-surface);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+}

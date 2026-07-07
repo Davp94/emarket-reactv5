@@ -1,69 +1,71 @@
 import { useEffect, useRef, useState } from "react";
 import type { SlideData } from "../../types/SlideData";
 import { MyButton } from "../MyButton/MyButton";
-import styles from './Carrousel.module.css';
-export function Carrousel () {
+import styles from "./Carrousel.module.css";
+import { supabase } from "../../utils/supabase";
 
-    //let currentSlide: number = 0;
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const carrouselRef = useRef<HTMLDivElement>(null);
-    const [slides, setSlides] = useState<SlideData[]>([
-        {
-            id: 1,
-            bgUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCqtX_RJ96e-VKZVQNH5CA27IHXglb7IARgztcyujku_ZMUBSFdfh3Jozy9d5bH9oyyaFguAJXGvyGflq5f01kkx7CgREFW7JGlIjyZpcB4cuUQ_egd2KGC2XlyI8Orn9e6ef4GRiyUNzepwCnpvfkLyfzh9X9YlKqp9G4jd_qQYxq0t8lPGyO4n1qX-G3U0jdJl8Ze04dM7OFw_2ktU1x1AfiSnqwdVoBNJ82yUOECxNkm0eK3RW3YXg',
-            title: 'Envíos gratis en todas tus compras',
-            description: 'Disfruta de la mejor experiencia de compra sin cargos adicionales de entrega en todo el país.',
-            buttonText: 'Comprar Ahora'
-        },
-        {
-            id: 2,
-            bgUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB2glnYQUFFhtzna2tok1XOrlpg0qQAl-N4JvtN2rWHzYZ_Y2RFMnGyFBwxMGKOKdU6-NZsMFhQzx0PHuns8sIQ_VqSVmDyRmwZVlENeo0kdyqqUDz9qEa2jY24RZGgCGFfjK68DJMvsYT0RXpa6yJ5OACgs5MweuAGX9MaQKMloqIUQlhmcrxRUHHWCxSC7yj_4q_ZqKR015tNI-zH0NiDj5kbMuHvFzWKXcFSITL6WPI83A7TjjwS0g',
-            title: 'Gran Liquidación: hasta 50% off',
-            description: 'Renueva tu hogar y tu estilo con descuentos imperdibles en todas las categorías de nuestra tienda.',
-            buttonText: 'Ver Ofertas'
-        }
-    ]);
+export function Carrousel() {
+  //let currentSlide: number = 0;
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const carrouselRef = useRef<HTMLDivElement>(null);
+  const [slides, setSlides] = useState<SlideData[]>([]);
 
-    useEffect(() => {
-        if(carrouselRef.current)
-        {
-            const scrollAmount = carrouselRef.current?.offsetWidth * currentSlide;
-            carrouselRef.current?.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-        console.log('CHANGE CARROUSEL TO', currentSlide)
-    }, [currentSlide])
-    //data info slides
-    const handleScroll = () => {
-
+  useEffect(() => {
+    async function fetchSlides() {
+      const { data, error } = await supabase.from("slides").select("*");
+      if (error) {
+        console.error("Error recuperando promociones");
+      } else if (data) {
+        setSlides(data as SlideData[]);
+      }
     }
-    return (
-        <section className={styles.section} id="carrousel">
-            <div ref={carrouselRef} className={styles.carrouselContainer} onScroll={handleScroll}>
-                {slides.map(
-                    slide => (
-                    <div key={slide.id} className={styles.slide}>
-                        <div className={styles.overlay}>
-                        </div>
-                        <div style={{backgroundImage: `url(${slide.bgUrl})`}} className={styles.bgImage}></div>
-                        <div className={styles.content}>
-                            <h1 className={styles.title}>{slide.title}</h1>
-                            <p className={styles.description}>{slide.description}</p>
-                            <MyButton variant="secondaryContainer">
-                                {slide.buttonText}
-                            </MyButton>
-                        </div>
-                    </div>)
-                )}
+    fetchSlides();
+  }, []);
+
+  useEffect(() => {
+    if (carrouselRef.current) {
+      const scrollAmount = carrouselRef.current?.offsetWidth * currentSlide;
+      carrouselRef.current?.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+    console.log("CHANGE CARROUSEL TO", currentSlide);
+  }, [currentSlide]);
+  //data info slides
+  const handleScroll = () => {};
+  return (
+    <section className={styles.section} id="carrousel">
+      <div
+        ref={carrouselRef}
+        className={styles.carrouselContainer}
+        onScroll={handleScroll}
+      >
+        {slides.map((slide) => (
+          <div key={slide.id} className={styles.slide}>
+            <div className={styles.overlay}></div>
+            <div
+              style={{ backgroundImage: `url(${slide.bg_url})` }}
+              className={styles.bgImage}
+            ></div>
+            <div className={styles.content}>
+              <h1 className={styles.title}>{slide.title}</h1>
+              <p className={styles.description}>{slide.description}</p>
+              <MyButton variant="secondaryContainer">
+                {slide.button_text}
+              </MyButton>
             </div>
-            <div className={styles.dotsContainer}>
-                {slides.map((_, index)=>(
-                    <button onClick={()=>setCurrentSlide(index)
-                    } className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ''}`}></button>
-                ))}
-            </div>
-        </section>
-    )
+          </div>
+        ))}
+      </div>
+      <div className={styles.dotsContainer}>
+        {slides.map((_, index) => (
+          <button
+            onClick={() => setCurrentSlide(index)}
+            className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ""}`}
+          ></button>
+        ))}
+      </div>
+    </section>
+  );
 }
